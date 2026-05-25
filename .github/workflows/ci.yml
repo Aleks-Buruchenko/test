@@ -1,14 +1,21 @@
-name: simple-ci
+name: CI for project
+
 on:
   push:
+    branches: [ main ]
   pull_request:
+    branches: [ main ]
+
 jobs:
-  test:
+  hello-world:
     runs-on: ubuntu-latest
+    
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 24
-      - run: npm ci
-      - run: npm test
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Say Hello
+      run: echo "Hello, GitHub Actions! This is my first workflow!"
+      
+    - name: Show date
+      run: date
